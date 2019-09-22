@@ -26,5 +26,3 @@ function getRepositories() {
       '</ul>';
     document.getElementById('repositories').innerHTML = repoDisplay;
 }
-
-  
