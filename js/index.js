@@ -22,11 +22,11 @@ function getRepositories() {
     document.getElementById('repositories').innerHTML = repoList;
   }
 
-    function getCommits(el) {
-    const username = document.getElementById('username').value;
-    const name = el.dataset.repository;
-    const req = new XMLHttpRequest();
-    req.addEventListener('load', displayCommits);
-    req.open('GET', `https://api.github.com/repos/${username}/${name}/commits`);
-    req.send();
+  function getCommits(el) {
+      const username = document.getElementById('username').value;
+      const name = el.dataset.repository;
+      const req = new XMLHttpRequest();
+      req.addEventListener('load', displayCommits);
+      req.open('GET', `https://api.github.com/repos/${username}/${name}/commits`);
+      req.send();
   }
