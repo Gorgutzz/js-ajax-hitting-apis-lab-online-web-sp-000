@@ -25,5 +25,3 @@ function getRepositories() {
       .join('')}</ul>`;
     document.getElementById('repositories').innerHTML = repoList;
   }
-
-  
