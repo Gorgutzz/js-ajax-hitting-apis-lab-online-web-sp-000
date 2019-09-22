@@ -14,7 +14,7 @@ function getRepositories() {
       .map(repo => {
         const dataUsername = 'data-username="' + repo.owner.login + '"';
         const dataRepoName = 'data-repository="' + repo.name + '"';
-        return
+        return 
       })
       .join('')}</ul>`;
     document.getElementById('repositories').innerHTML = repoList;
