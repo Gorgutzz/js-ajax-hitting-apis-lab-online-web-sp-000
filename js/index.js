@@ -56,3 +56,16 @@ function getBranches(el) {
   req.open('GET', `https://api.github.com/repos/${username}/${name}/branches`);
   req.send();
 }
+
+function displayBranches() {
+    const branches = JSON.parse(this.responseText);
+    console.log(branches);
+    const branchesList = `<ul>${branches.map(
+            branch =>
+                '<li><strong>' +
+                branch.name +
+                '</strong>' +
+                '</li>'
+        )
+        .join('')}</ul>`;
+    document.getElementById('details').innerHTML = branchesList;  } 
