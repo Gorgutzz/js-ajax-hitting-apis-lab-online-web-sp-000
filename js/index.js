@@ -9,7 +9,8 @@ function getRepositories() {
 
   function displayRepositories() {
     const repos = JSON.parse(this.responseText);
-    const repoDisplay  = '<ul>' +
+    const repoDisplay =
+      '<ul>' +
       repos.map(repo => {
         const dataUsername = 'data-username="' + repo.owner.login + '"';
         const dataRepoName = 'data-repository="' + repo.name + '"';
@@ -24,3 +25,5 @@ function getRepositories() {
       .join('')}</ul>`;
     document.getElementById('repositories').innerHTML = repoList;
   }
+
+  
