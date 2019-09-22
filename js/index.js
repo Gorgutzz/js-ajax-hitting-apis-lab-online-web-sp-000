@@ -7,41 +7,41 @@ function getRepositories() {
     req.send();
   }
 
-  function displayRepositories() {
-    var repos = JSON.parse(this.responseText);
-    const repoList = `<ul>${repos
-      .map(
-        r =>
-          '<li>' +
-          r.name +
-          r.html_url +
-          ' - <a href="#" data-repo="' + r.name + '" onclick="getCommits(this)">Get Commits</a></li>' +
-          ' - <a href="#" data-repo="' + r.name + '" onclick="getBranches(this)">Get Branches</a></li>'
-      )
-      .join('')}</ul>`;
-    document.getElementById('repositories').innerHTML = repoList;
-  }
+function displayRepositories() {
+  var repos = JSON.parse(this.responseText);
+  const repoList = `<ul>${repos
+    .map(
+      r =>
+        '<li>' +
+        r.name +
+        r.html_url +
+        ' - <a href="#" data-repo="' + r.name + '" onclick="getCommits(this)">Get Commits</a></li>' +
+        ' - <a href="#" data-repo="' + r.name + '" onclick="getBranches(this)">Get Branches</a></li>'
+    )
+    .join('')}</ul>`;
+  document.getElementById('repositories').innerHTML = repoList;
+}
 
-    function getCommits(el) {
-      const username = document.getElementById('username').value;
-      const name = el.dataset.repository;
-      const req = new XMLHttpRequest();
-      req.addEventListener('load', displayCommits);
-      req.open('GET', `https://api.github.com/repos/${username}/${name}/commits`);
-      req.send();
-  }
+function getCommits(el) {
+  const username = document.getElementById('username').value;
+  const name = el.dataset.repository;
+  const req = new XMLHttpRequest();
+  req.addEventListener('load', displayCommits);
+  req.open('GET', `https://api.github.com/repos/${username}/${name}/commits`);
+  req.send();
+}
 
-  function showCommits() {
-    const commits = JSON.parse(this.responseText);
-    const commitsList = `<ul>${commits
-      .map(
-        commit =>
-          '<li><strong>' +
-          commit.author.login +
-          '</strong> - ' +
-          commit.commit.message +
-          '</li>'
-      )
-      .join('')}</ul>`;
-    document.getElementById('commits').innerHTML = commitsList;
+function showCommits() {
+  const commits = JSON.parse(this.responseText);
+  const commitsList = `<ul>${commits
+    .map(
+      commit =>
+        '<li><strong>' +
+        commit.author.login +
+        '</strong> - ' +
+        commit.commit.message +
+        '</li>'
+    )
+    .join('')}</ul>`;
+  document.getElementById('commits').innerHTML = commitsList;
 }
