@@ -49,11 +49,10 @@ function displayCommits() {
 }
 
 function getBranches(el) {
-  const repoName = el.dataset.repository;
-  const userName = el.dataset.username;
-  const url = 'https://api.github.com/repos/' + userName + '/' + repoName + '/branches';
+  const username = document.getElementById('username').value;
+  const name = el.dataset.repository;
   const req = new XMLHttpRequest();
   req.addEventListener('load', displayBranches);
-  req.open('GET', url);
+  req.open('GET', `https://api.github.com/repos/${username}/${name}/branches`);
   req.send();
 }
