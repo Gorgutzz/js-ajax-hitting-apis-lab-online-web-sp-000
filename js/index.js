@@ -21,3 +21,13 @@ function getRepositories() {
       .join('')}</ul>`;
     document.getElementById('repositories').innerHTML = repoList;
   }
+
+    function getCommits(el) {
+    const name = el.dataset.repository;
+    const username = el.dataset.username;
+    const url = 'https://api.github.com/repos/' + userName + '/' + repoName + '/commits';
+    const req = new XMLHttpRequest();
+    req.addEventListener('load', displayCommits);
+    req.open('GET', url);
+    req.send();
+  }
